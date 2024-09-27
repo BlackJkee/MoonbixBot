@@ -85,7 +85,7 @@ class Tapper:
 
     def success(self, message):
         from bot.utils import success
-        success(f"<green>{self.session_name}</green> | ✅ {message}")
+        success(f"<green>{self.session_name}</green> | ✔️ {message}")
 
     def save_user_agent(self):
         user_agents_file_name = "user_agents.json"
@@ -385,7 +385,7 @@ class Tapper:
             data = await response.json()
 
             if data['success']:
-                self.success(f"Successfully earned: 💰<yellow>{game_data['log']}</yellow> 💰 from game!")
+                self.success(f"Successfully earned: <yellow>{game_data['log']}</yellow> 💰 from game!")
             else:
                 self.warning(f"Failed to complete game: {game_data}")
         except Exception as error:
@@ -403,7 +403,7 @@ class Tapper:
             attempts_left = info['totalAttempts'] - info['consumedAttempts']
 
             while attempts_left > 0:
-                self.info(f"Attempts left: 🚀<cyan>{attempts_left}</cyan> 🚀")
+                self.info(f"Attempts left: <cyan>{attempts_left}</cyan> 🚀")
 
                 self.info(f"Starting game...")
 
@@ -509,7 +509,7 @@ class Tapper:
                 await asyncio.sleep(delay=2)
 
                 if user is not None:
-                    self.info(f"Points: 💰<light-green>{'{:,}'.format(total_balance)}</light-green> 💰 | Your Attempts: 🚀<light-green>{'{:,}'.format(current_attempts)}</light-green> 🚀")
+                    self.info(f"Points: <light-green>{'{:,}'.format(total_balance)}</light-green> 💰 | Your Attempts: <light-green>{'{:,}'.format(current_attempts)}</light-green> 🚀")
 
                     if settings.ENABLE_AUTO_TASKS:
                         tasks_list = await self.get_task_list(http_client=http_client)
